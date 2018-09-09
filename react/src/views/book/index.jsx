@@ -12,6 +12,7 @@ import Table from '../../components/table.jsx';
 import Modal from '../../components/modal.jsx';
 import NewEditBook from './new-edit.jsx';
 import Alert from '../../components/alert.jsx';
+import DeleteBook from './delete.jsx';
 
 class Book extends Component {
     constructor() {
@@ -23,6 +24,7 @@ class Book extends Component {
 
             modalNew: false,
             modalEdit: false,
+            modalDelete: false,
 
         }
     }
@@ -56,13 +58,16 @@ class Book extends Component {
                 key: 'id',
                 render: (key) => (
                     <span>
-                        <label onClick={() =>
+                        <img src="static/img/edit.png" onClick={() =>
                             this.setState({
                                 infoDetail: this.state.book.get('array').get(key),
                                 modalEdit: true,
-                            })}>
-                            Edit
-                        </label>
+                            })} />
+                        <img src="static/img/delete.png" onClick={() =>
+                            this.setState({
+                                infoDetail: this.state.book.get('array').get(key),
+                                modalDelete: true,
+                            })} /> 
                     </span>
                 )
             }
@@ -98,6 +103,18 @@ class Book extends Component {
                                 actions={this.props.actions}
                                 back={() => this.setState({modalEdit: false})}
                                 detail={this.state.infoDetail.toJS()}
+                            />
+                        </Modal>
+                }
+                {
+                    this.state.modalDelete &&
+                        <Modal>
+                            <DeleteBook
+                                detail={this.state.infoDetail.toJS()}
+                                name='name'
+                                back={() => this.setState({modalDelete: false})}
+                                actions={this.props.actions}
+                                info={this.props.book}
                             />
                         </Modal>
                 }

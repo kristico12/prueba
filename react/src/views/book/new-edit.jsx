@@ -1,7 +1,6 @@
 // Dependencies
 import React, { Component, Fragment, createRef } from 'react';
 import Loading from '../../components/loading.jsx';
-import { fromJS } from 'immutable';
 
 class NewEditBook extends Component {
     constructor(props) {
@@ -11,21 +10,21 @@ class NewEditBook extends Component {
                 id: this.props.detail.id,
                 name: this.props.detail.name,
                 editorial: this.props.detail.editorial,
-                authors: this.props.detail.authors,
+                authors: this.props.detail.authors.slice(),
             },
             loading: false,
         }
         this.valAutor = createRef();
     }
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if (prevProps.info !== this.props.info) {
             if (this.props.detail.id === 0) {
-                this.props.actions.AlertSuccess('Guardado Correctamente');
+                await this.props.actions.AlertSuccess('Guardado Correctamente');
             } else {
-                this.props.actions.AlertSuccess('Actualizado Correctamente');
+                await this.props.actions.AlertSuccess('Actualizado Correctamente');
             }
             this.props.back();
-            this.props.actions.AlertSuccess('');
+            await this.props.actions.AlertSuccess('');
         }
     }
     onChange(e) {

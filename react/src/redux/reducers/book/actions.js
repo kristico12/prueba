@@ -75,12 +75,26 @@ function BookUpdate(data) {
         );
     }
 }
+function BookDelete(data) {
+    return (dispatch) => {
+        //Simulate call
+        const object = data;
+        object.key = data.id;
+        dispatch(
+            setBookDispacth(
+                typeActions.BOOK_DELETE,
+                object
+            )
+        );
+    }
+}
 
 
 export default {
     BookLoad,
     BookCreate,
     BookUpdate,
+    BookDelete,
     AlertError,
     AlertSuccess,
 }
