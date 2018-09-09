@@ -13,6 +13,7 @@ import { initAuth } from './src/redux/reducers/auth/actions';
 // Routes
 import { RouteInit } from './routes.jsx';
 
+
 initAuth(store.dispatch).then(() => {
     ReactDOM.render(
         <Provider store={store}>

@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 
+//Components
+import Alert from '../components/alert.jsx';
+
 //utils
 import { validateEmail } from '../utils/validate';
 
@@ -19,6 +22,8 @@ class Login extends Component {
             },
             loading: false,
         }
+    }
+    componentDidUpdate(prevProps) {
     }
     onChange(e) {
         const target = e.target;
@@ -69,6 +74,9 @@ class Login extends Component {
         ]
         return (
             <div>
+                <Alert
+                    error={this.props.error}
+                />
                 <form>
                     {
                         input.map((value) => (
