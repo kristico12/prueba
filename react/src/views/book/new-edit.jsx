@@ -16,6 +16,12 @@ class NewEditBook extends Component {
         }
         this.valAutor = createRef();
     }
+    componentDidUpdate(prevProps) {
+        if (prevProps.info !== this.props.info) {
+            this.props.actions.AlertSuccess('Guardado Correctamente');
+            this.props.back()
+        }
+    }
     onChange(e) {
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -124,6 +130,7 @@ class NewEditBook extends Component {
                         }
                     </ul>
                     <div>
+                        <button onClick={() => this.props.back()}>Atras</button>
                         <button>Guardar</button>
                         {
                             this.state.loading &&

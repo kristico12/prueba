@@ -23,6 +23,16 @@ function AlertError(data) {
         )
     }
 }
+function AlertSuccess(data) {
+    return (dispatch) => {
+        dispatch(
+            setBookDispacth(
+                typeActions.BOOK_MESSAGE_SUCCESS,
+                data
+            )
+        )
+    }
+}
 function BookLoad() {
     return (dispatch) => {
         //Simulate call
@@ -48,7 +58,7 @@ function BookCreate(data) {
                 typeActions.BOOK_CREATE,
                 object
             )
-        )
+        );
     }
 }
 
@@ -57,4 +67,5 @@ export default {
     BookLoad,
     BookCreate,
     AlertError,
+    AlertSuccess,
 }

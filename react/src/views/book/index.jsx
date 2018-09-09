@@ -70,6 +70,7 @@ class Book extends Component {
             <div>
                 <Alert
                     error={this.props.error}
+                    success={this.props.success}
                 />
                 <button type="button" onClick={() => this.setState({modalNew: true})}>Agregar</button>
                 <Table
@@ -82,7 +83,9 @@ class Book extends Component {
                     this.state.modalNew &&
                         <Modal>
                             <NewEditBook
+                                info={this.props.book}
                                 actions={this.props.actions}
+                                back={() => this.setState({modalNew: false})}
                             />
                         </Modal>
                 }
