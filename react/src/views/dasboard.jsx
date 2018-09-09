@@ -1,9 +1,16 @@
 // Dependencies
 import React from 'react';
 
+//Routes
+import { RouteMenu } from '../routes.jsx';
+
 function Dasboard() {
     return (
-        <h1>Dasboard</h1>
+        <div>
+            {
+                RouteMenu
+            }
+        </div>
     )
 }
 export default Dasboard;

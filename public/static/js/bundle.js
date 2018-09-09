@@ -1892,7 +1892,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.RouteInit = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _cookies = __webpack_require__(/*! ./utils/cookies */ \"./react/src/utils/cookies.js\");\n\nvar _dasboard = __webpack_require__(/*! ./views/dasboard.jsx */ \"./react/src/views/dasboard.jsx\");\n\nvar _dasboard2 = _interopRequireDefault(_dasboard);\n\nvar _login = __webpack_require__(/*! ./views/login.jsx */ \"./react/src/views/login.jsx\");\n\nvar _login2 = _interopRequireDefault(_login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//views\nconst notRequireAuth = component => (0, _cookies.getCookie)() !== undefined ? _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' }) : component; // Dependencies\n\nconst requireAuth = component => (0, _cookies.getCookie)() !== undefined ? component : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });\n\nconst RouteInit = exports.RouteInit = _react2.default.createElement(\n    _reactRouterDom.Switch,\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', render: () => notRequireAuth(_react2.default.createElement(_login2.default, null)) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/404', render: () => _react2.default.createElement(\n            'h1',\n            null,\n            'NOTFOUND'\n        ) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/', render: () => requireAuth(_react2.default.createElement(_dasboard2.default, null)) })\n);\n\n//# sourceURL=webpack:///./react/src/routes.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.RouteMenu = exports.RouteInit = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _cookies = __webpack_require__(/*! ./utils/cookies */ \"./react/src/utils/cookies.js\");\n\nvar _dasboard = __webpack_require__(/*! ./views/dasboard.jsx */ \"./react/src/views/dasboard.jsx\");\n\nvar _dasboard2 = _interopRequireDefault(_dasboard);\n\nvar _login = __webpack_require__(/*! ./views/login.jsx */ \"./react/src/views/login.jsx\");\n\nvar _login2 = _interopRequireDefault(_login);\n\nvar _index = __webpack_require__(/*! ./views/book/index.jsx */ \"./react/src/views/book/index.jsx\");\n\nvar _index2 = _interopRequireDefault(_index);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Dependencies\nconst notRequireAuth = component => (0, _cookies.getCookie)() !== undefined ? _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' }) : component;\n\n//views\n\nconst requireAuth = component => (0, _cookies.getCookie)() !== undefined ? component : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });\n\nconst RouteInit = exports.RouteInit = _react2.default.createElement(\n    _reactRouterDom.Switch,\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', render: () => notRequireAuth(_react2.default.createElement(_login2.default, null)) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/404', render: () => _react2.default.createElement(\n            'h1',\n            null,\n            'NOTFOUND'\n        ) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/', render: () => requireAuth(_react2.default.createElement(_dasboard2.default, null)) })\n);\nconst RouteMenu = exports.RouteMenu = _react2.default.createElement(\n    _reactRouterDom.Switch,\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),\n    _react2.default.createElement(_reactRouterDom.Redirect, { to: '/404' })\n);\n\n//# sourceURL=webpack:///./react/src/routes.jsx?");
 
 /***/ }),
 
@@ -1920,6 +1920,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 /***/ }),
 
+/***/ "./react/src/views/book/index.jsx":
+/*!****************************************!*\
+  !*** ./react/src/views/book/index.jsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nclass Book extends _react.Component {\n    constructor() {\n        super();\n        this.state = {\n            book: {}\n        };\n    }\n    render() {\n        return _react2.default.createElement(\n            'h4',\n            null,\n            'book'\n        );\n    }\n} // Dependencies\nexports.default = Book;\n\n//# sourceURL=webpack:///./react/src/views/book/index.jsx?");
+
+/***/ }),
+
 /***/ "./react/src/views/dasboard.jsx":
 /*!**************************************!*\
   !*** ./react/src/views/dasboard.jsx ***!
@@ -1928,7 +1940,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction Dasboard() {\n    return _react2.default.createElement(\n        'h1',\n        null,\n        'Dasboard'\n    );\n} // Dependencies\nexports.default = Dasboard;\n\n//# sourceURL=webpack:///./react/src/views/dasboard.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _routes = __webpack_require__(/*! ../routes.jsx */ \"./react/src/routes.jsx\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Dependencies\nfunction Dasboard() {\n    return _react2.default.createElement(\n        'div',\n        null,\n        _routes.RouteMenu\n    );\n}\n\n//Routes\nexports.default = Dasboard;\n\n//# sourceURL=webpack:///./react/src/views/dasboard.jsx?");
 
 /***/ }),
 
