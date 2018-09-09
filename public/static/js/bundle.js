@@ -1824,6 +1824,30 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 /***/ }),
 
+/***/ "./react/src/components/modal.jsx":
+/*!****************************************!*\
+  !*** ./react/src/components/modal.jsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _style = __webpack_require__(/*! styled-jsx/style */ \"./node_modules/styled-jsx/style.js\");\n\nvar _style2 = _interopRequireDefault(_style);\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction Modal(props) {\n  return _react2.default.createElement(\n    \"div\",\n    {\n      className: \"jsx-3276194624\" + \" \" + \"modal-section\"\n    },\n    _react2.default.createElement(\n      \"div\",\n      {\n        className: \"jsx-3276194624\" + \" \" + \"modal-content\"\n      },\n      props.children\n    ),\n    _react2.default.createElement(_style2.default, {\n      styleId: \"3276194624\",\n      css: [\".modal-section.jsx-3276194624{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.6);}\", \".modal-content.jsx-3276194624{background-color:white;}\"]\n    })\n  );\n} // Dependencies\nexports.default = Modal;\n\n//# sourceURL=webpack:///./react/src/components/modal.jsx?");
+
+/***/ }),
+
+/***/ "./react/src/components/table.jsx":
+/*!****************************************!*\
+  !*** ./react/src/components/table.jsx ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction Table(props) {\n    let rows = [];\n    if (!props.loading) {\n        rows = props.data.map(data => _react2.default.createElement(\n            \"tr\",\n            { key: data.get(props.id) },\n            props.columns.map(column => _react2.default.createElement(\n                \"td\",\n                { key: column.title },\n                column.render ? column.render(data.get(column.key)) : data.get(column.key)\n            ))\n        )).toArray();\n    }\n    return _react2.default.createElement(\n        \"table\",\n        { className: \"Table\" },\n        _react2.default.createElement(\n            \"thead\",\n            null,\n            _react2.default.createElement(\n                \"tr\",\n                { key: \"row\" },\n                props.columns.map(column =>\n                /* eslint-disable jsx-a11y/no-static-element-interactions */\n                _react2.default.createElement(\n                    \"th\",\n                    {\n                        key: column.title\n                    },\n                    column.title,\n                    \" \\xA0\"\n                )\n                /* eslint-enable jsx-a11y/no-static-element-interactions */\n                )\n            )\n        ),\n        _react2.default.createElement(\n            \"tbody\",\n            null,\n            props.loading ? _react2.default.createElement(\n                \"tr\",\n                null,\n                \"loading...\"\n            ) : rows\n        )\n    );\n} // Dependencies\nexports.default = Table;\n\n//# sourceURL=webpack:///./react/src/components/table.jsx?");
+
+/***/ }),
+
 /***/ "./react/src/redux/reducer.js":
 /*!************************************!*\
   !*** ./react/src/redux/reducer.js ***!
@@ -1832,7 +1856,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _reduxImmutable = __webpack_require__(/*! redux-immutable */ \"./node_modules/redux-immutable/dist/index.js\");\n\nvar _reducer = __webpack_require__(/*! ./reducers/auth/reducer */ \"./react/src/redux/reducers/auth/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Dependencies\nconst store = (0, _reduxImmutable.combineReducers)({\n    Auth: _reducer2.default\n});\n\n//Reducers\nexports.default = store;\n\n//# sourceURL=webpack:///./react/src/redux/reducer.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _reduxImmutable = __webpack_require__(/*! redux-immutable */ \"./node_modules/redux-immutable/dist/index.js\");\n\nvar _reducer = __webpack_require__(/*! ./reducers/auth/reducer */ \"./react/src/redux/reducers/auth/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nvar _reducer3 = __webpack_require__(/*! ./reducers/book/reducer */ \"./react/src/redux/reducers/book/reducer.js\");\n\nvar _reducer4 = _interopRequireDefault(_reducer3);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//Reducers\nconst store = (0, _reduxImmutable.combineReducers)({\n    Auth: _reducer2.default,\n    Book: _reducer4.default\n}); // Dependencies\nexports.default = store;\n\n//# sourceURL=webpack:///./react/src/redux/reducer.js?");
 
 /***/ }),
 
@@ -1872,6 +1896,54 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 /***/ }),
 
+/***/ "./react/src/redux/reducers/book/actions.js":
+/*!**************************************************!*\
+  !*** ./react/src/redux/reducers/book/actions.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _typeActions = __webpack_require__(/*! ./typeActions */ \"./react/src/redux/reducers/book/typeActions.js\");\n\nvar _typeActions2 = _interopRequireDefault(_typeActions);\n\nvar _InmmutableActions = __webpack_require__(/*! ../../../utils/InmmutableActions */ \"./react/src/utils/InmmutableActions.js\");\n\nvar _model = __webpack_require__(/*! ./model */ \"./react/src/redux/reducers/book/model.js\");\n\nvar _model2 = _interopRequireDefault(_model);\n\nvar _store = __webpack_require__(/*! ../../store */ \"./react/src/redux/store.js\");\n\nvar _store2 = _interopRequireDefault(_store);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Dispacher\n// utils\nfunction setBookDispacth(type, payload) {\n    return {\n        type,\n        payload\n    };\n}\n\n// Actions\nfunction BookLoad() {\n    return dispatch => {\n        //Simulate call\n        const data = {};\n        data.count = _store2.default.getState().get('Book').get('Data').get('count');\n        data.array = (0, _InmmutableActions.VecInmutable)(_model2.default, []);\n        dispatch(setBookDispacth(_typeActions2.default.BOOK_LOAD, data));\n    };\n}\n\nexports.default = {\n    BookLoad\n};\n\n//# sourceURL=webpack:///./react/src/redux/reducers/book/actions.js?");
+
+/***/ }),
+
+/***/ "./react/src/redux/reducers/book/model.js":
+/*!************************************************!*\
+  !*** ./react/src/redux/reducers/book/model.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _immutable = __webpack_require__(/*! immutable */ \"./node_modules/immutable/dist/immutable.js\");\n\nconst model = new _immutable.Record({\n    id: Number,\n    name: '',\n    editorial: '',\n    authors: []\n});\n\nexports.default = model;\n\n//# sourceURL=webpack:///./react/src/redux/reducers/book/model.js?");
+
+/***/ }),
+
+/***/ "./react/src/redux/reducers/book/reducer.js":
+/*!**************************************************!*\
+  !*** ./react/src/redux/reducers/book/reducer.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _immutable = __webpack_require__(/*! immutable */ \"./node_modules/immutable/dist/immutable.js\");\n\nvar _reduxImmutable = __webpack_require__(/*! redux-immutable */ \"./node_modules/redux-immutable/dist/index.js\");\n\nvar _typeActions = __webpack_require__(/*! ./typeActions */ \"./react/src/redux/reducers/book/typeActions.js\");\n\nvar _typeActions2 = _interopRequireDefault(_typeActions);\n\nvar _InmmutableActions = __webpack_require__(/*! ../../../utils/InmmutableActions */ \"./react/src/utils/InmmutableActions.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst initialState = (0, _immutable.fromJS)({\n    book: {\n        data: {\n            count: 0,\n            array: {}\n        },\n        errors: {},\n        success: {}\n    }\n});\n\nfunction Error(state = initialState.get('book').get('errors'), action = {}) {\n    switch (action.type) {\n        case _typeActions2.default.BOOK_MESSAGE_ERROR:\n            return action.payload;\n        default:\n            return state;\n    }\n}\nfunction Data(state = initialState.get('book').get('data'), action = {}) {\n    switch (action.type) {\n        case _typeActions2.default.BOOK_LOAD:\n            action.payload.array = (0, _InmmutableActions.ConvertVecInmutableToObjectfull)(action.payload.array, 'id', (0, _immutable.fromJS)({}));\n            return (0, _immutable.fromJS)(action.payload);\n        case _typeActions2.default.BOOK_CREATE:\n        case _typeActions2.default.BOOK_UPDATE:\n            return state.set('array', state.get('array').set(action.payload.key, (0, _immutable.Map)(action.payload.data)));\n        case _typeActions2.default.BOOK_DELETE:\n            return state.set('array', state.get('array').delete(action.payload.key));\n        default:\n            return state;\n    }\n}\nfunction Success(state = initialState.get('book').get('success'), action = {}) {\n    switch (action.type) {\n        case _typeActions2.default.BOOK_MESSAGE_SUCCESS:\n            return action.payload;\n        default:\n            return state;\n    }\n}\n\nconst Book = (0, _reduxImmutable.combineReducers)({\n    Data,\n    Error,\n    Success\n});\n\nexports.default = Book;\n\n//# sourceURL=webpack:///./react/src/redux/reducers/book/reducer.js?");
+
+/***/ }),
+
+/***/ "./react/src/redux/reducers/book/typeActions.js":
+/*!******************************************************!*\
+  !*** ./react/src/redux/reducers/book/typeActions.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nconst typeActions = {\n    BOOK_MESSAGE_ERROR: 'BOOK_MESSAGE_ERROR',\n    BOOK_LOAD: 'BOOK_LOAD',\n    BOOK_CREATE: 'BOOK_CREATE',\n    BOOK_UPDATE: 'BOOK_UPDATE',\n    BOOK_DELETE: 'BOOK_DELETE',\n    BOOK_MESSAGE_SUCCESS: 'BOOK_MESSAGE_SUCCESS'\n};\n\nexports.default = typeActions;\n\n//# sourceURL=webpack:///./react/src/redux/reducers/book/typeActions.js?");
+
+/***/ }),
+
 /***/ "./react/src/redux/store.js":
 /*!**********************************!*\
   !*** ./react/src/redux/store.js ***!
@@ -1893,6 +1965,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.RouteMenu = exports.RouteInit = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\n\nvar _cookies = __webpack_require__(/*! ./utils/cookies */ \"./react/src/utils/cookies.js\");\n\nvar _dasboard = __webpack_require__(/*! ./views/dasboard.jsx */ \"./react/src/views/dasboard.jsx\");\n\nvar _dasboard2 = _interopRequireDefault(_dasboard);\n\nvar _login = __webpack_require__(/*! ./views/login.jsx */ \"./react/src/views/login.jsx\");\n\nvar _login2 = _interopRequireDefault(_login);\n\nvar _index = __webpack_require__(/*! ./views/book/index.jsx */ \"./react/src/views/book/index.jsx\");\n\nvar _index2 = _interopRequireDefault(_index);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Dependencies\nconst notRequireAuth = component => (0, _cookies.getCookie)() !== undefined ? _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' }) : component;\n\n//views\n\nconst requireAuth = component => (0, _cookies.getCookie)() !== undefined ? component : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/login' });\n\nconst RouteInit = exports.RouteInit = _react2.default.createElement(\n    _reactRouterDom.Switch,\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', render: () => notRequireAuth(_react2.default.createElement(_login2.default, null)) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/404', render: () => _react2.default.createElement(\n            'h1',\n            null,\n            'NOTFOUND'\n        ) }),\n    _react2.default.createElement(_reactRouterDom.Route, { path: '/', render: () => requireAuth(_react2.default.createElement(_dasboard2.default, null)) })\n);\nconst RouteMenu = exports.RouteMenu = _react2.default.createElement(\n    _reactRouterDom.Switch,\n    null,\n    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),\n    _react2.default.createElement(_reactRouterDom.Redirect, { to: '/404' })\n);\n\n//# sourceURL=webpack:///./react/src/routes.jsx?");
+
+/***/ }),
+
+/***/ "./react/src/utils/InmmutableActions.js":
+/*!**********************************************!*\
+  !*** ./react/src/utils/InmmutableActions.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.ConvertVecInmutableToObjectfull = exports.VecInmutable = undefined;\n\nvar _immutable = __webpack_require__(/*! immutable */ \"./node_modules/immutable/dist/immutable.js\");\n\nfunction VecInmutable(model, array) {\n    return array.map(item => model(item));\n}\n\nfunction ConvertVecInmutableToObjectfull(array, id, initial) {\n    return array.reduce((requests, request) => requests.set(request[id], (0, _immutable.Map)(request)), initial);\n}\nexports.VecInmutable = VecInmutable;\nexports.ConvertVecInmutableToObjectfull = ConvertVecInmutableToObjectfull;\n\n//# sourceURL=webpack:///./react/src/utils/InmmutableActions.js?");
 
 /***/ }),
 
@@ -1928,7 +2012,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nclass Book extends _react.Component {\n    constructor() {\n        super();\n        this.state = {\n            book: {}\n        };\n    }\n    render() {\n        return _react2.default.createElement(\n            'h4',\n            null,\n            'book'\n        );\n    }\n} // Dependencies\nexports.default = Book;\n\n//# sourceURL=webpack:///./react/src/views/book/index.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _immutable = __webpack_require__(/*! immutable */ \"./node_modules/immutable/dist/immutable.js\");\n\nvar _actions = __webpack_require__(/*! ../../redux/reducers/book/actions */ \"./react/src/redux/reducers/book/actions.js\");\n\nvar _actions2 = _interopRequireDefault(_actions);\n\nvar _table = __webpack_require__(/*! ../../components/table.jsx */ \"./react/src/components/table.jsx\");\n\nvar _table2 = _interopRequireDefault(_table);\n\nvar _modal = __webpack_require__(/*! ../../components/modal.jsx */ \"./react/src/components/modal.jsx\");\n\nvar _modal2 = _interopRequireDefault(_modal);\n\nvar _new = __webpack_require__(/*! ./new.jsx */ \"./react/src/views/book/new.jsx\");\n\nvar _new2 = _interopRequireDefault(_new);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Call\n// Dependencies\nclass Book extends _react.Component {\n    constructor() {\n        super();\n        this.state = {\n            book: {},\n            loading: true,\n            infoDetail: {},\n\n            modalNew: false\n\n        };\n    }\n    async componentDidMount() {\n        await this.props.actions.BookLoad();\n        this.setState({ loading: false });\n    }\n    componentDidUpdate(prevProps) {\n        if (prevProps.book !== this.props.book) {\n            this.setState({\n                book: this.props.book\n            });\n        }\n    }\n    render() {\n        const columns = [{\n            title: 'Id',\n            key: 'id'\n        }, {\n            title: 'Nombre',\n            key: 'name'\n        }, {\n            title: 'Editorial',\n            key: 'editorial'\n        }, {\n            title: 'Opciones',\n            key: 'id',\n            render: key => _react2.default.createElement(\n                \"span\",\n                null,\n                _react2.default.createElement(\n                    \"label\",\n                    { onClick: () => this.setState({\n                            infoDetail: this.state.attributes.get('array').get(key),\n                            modalEdit: true\n                        }) },\n                    \"Edit\"\n                )\n            )\n        }];\n        return _react2.default.createElement(\n            \"div\",\n            null,\n            _react2.default.createElement(\n                \"button\",\n                { type: \"button\", onClick: () => this.setState({ modalNew: true }) },\n                \"Agregar\"\n            ),\n            _react2.default.createElement(_table2.default, {\n                columns: columns,\n                data: (0, _immutable.Map)(_immutable.Map.isMap(this.state.book) ? this.state.book.get('array') : []),\n                id: \"id\",\n                loading: this.state.loading\n            }),\n            this.state.modalNew && _react2.default.createElement(\n                _modal2.default,\n                null,\n                _react2.default.createElement(_new2.default, {\n                    actions: this.props.actions\n                })\n            )\n        );\n    }\n}\n\n// Components\n\nfunction mapStateToProps(state) {\n    return {\n        book: state.get('Book').get('Data'),\n        success: state.get('Book').get('Success'),\n        error: state.get('Book').get('Error')\n    };\n}\n\nfunction mapDispatchToProps(dispatch) {\n    return { actions: (0, _redux.bindActionCreators)(_actions2.default, dispatch) };\n}\n\nexports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Book);\n\n//# sourceURL=webpack:///./react/src/views/book/index.jsx?");
+
+/***/ }),
+
+/***/ "./react/src/views/book/new.jsx":
+/*!**************************************!*\
+  !*** ./react/src/views/book/new.jsx ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nclass NewBook extends _react.Component {\n    render() {\n        return _react2.default.createElement(\n            'h4',\n            null,\n            'modal'\n        );\n    }\n} // Dependencies\nexports.default = NewBook;\n\n//# sourceURL=webpack:///./react/src/views/book/new.jsx?");
 
 /***/ }),
 
