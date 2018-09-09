@@ -2,7 +2,7 @@
 import React, { Component, Fragment, createRef } from 'react';
 import Loading from '../../components/loading.jsx';
 
-class NewBook extends Component {
+class NewEditBook extends Component {
     constructor() {
         super();
         this.state = {
@@ -28,7 +28,7 @@ class NewBook extends Component {
     async addAuthors(data) {
         const book = Object.assign({},this.state.book);
         const array = this.state.book.authors.slice();
-        if (!array.every((info) => info !== data)) {
+        if (!array.every((info) => info.name !== data)) {
             await this.props.actions.AlertError('Este Author A sido Añadido');
         } else if (data.length < 3) {
             await this.props.actions.AlertError('Nombre de Autor Invalido');
@@ -74,7 +74,10 @@ class NewBook extends Component {
             }
             const isValid = Valid(this.state.book);
             if (isValid.bool) {
-
+                const time = new Date();
+                const book = Object.assign({}, this.state.book);
+                book.id = (!this.props.book.id.length===0) || time.getTime();
+                this.props.actions.BookCreate(book);
             } else {
                 await this.props.actions.AlertError(isValid.error);
                 await this.props.actions.AlertError('');
@@ -132,8 +135,10 @@ class NewBook extends Component {
         )
     }
 }
-NewBook.defaultProps = {
-    book: {}
+NewEditBook.defaultProps = {
+    book: {
+        id: '',
+    }
 }
 
-export default NewBook;
+export default NewEditBook;

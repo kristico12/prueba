@@ -29,6 +29,10 @@ function Data(state = initialState.get('book').get('data'), action = {}) {
             action.payload.array = ConvertVecInmutableToObjectfull(action.payload.array, 'id', fromJS({}))
             return fromJS(action.payload);
         case typeActions.BOOK_CREATE:
+            const obj = {}
+            obj.count = state.get('count') + 1;
+            obj.array = state.get('array').set(action.payload.key, map(action.payload.data));
+            return fromJS(obj)
         case typeActions.BOOK_UPDATE:
             return state.set('array', state.get('array').set(action.payload.key, map(action.payload.data)))
         case typeActions.BOOK_DELETE:

@@ -37,8 +37,24 @@ function BookLoad() {
         )
     }
 }
+function BookCreate(data) {
+    return (dispatch) => {
+        //Simulate call
+        const object = data;
+        object.key = data.id;
+        object.data = data;
+        dispatch(
+            setBookDispacth(
+                typeActions.BOOK_CREATE,
+                object
+            )
+        )
+    }
+}
+
 
 export default {
     BookLoad,
+    BookCreate,
     AlertError,
 }

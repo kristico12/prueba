@@ -10,7 +10,7 @@ import actions from '../../redux/reducers/book/actions';
 // Components
 import Table from '../../components/table.jsx';
 import Modal from '../../components/modal.jsx';
-import NewBook from './new.jsx';
+import NewEditBook from './new-edit.jsx';
 import Alert from '../../components/alert.jsx';
 
 class Book extends Component {
@@ -81,7 +81,7 @@ class Book extends Component {
                 {
                     this.state.modalNew &&
                         <Modal>
-                            <NewBook
+                            <NewEditBook
                                 actions={this.props.actions}
                             />
                         </Modal>
