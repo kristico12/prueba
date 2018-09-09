@@ -35,9 +35,7 @@ function Table(props) {
             </thead>
             <tbody>
                 {
-                    props.loading ?
-                        <tr>loading...</tr>
-                    : rows
+                    rows
                 }
             </tbody>
         </table>
