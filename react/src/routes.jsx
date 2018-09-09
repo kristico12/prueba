@@ -2,14 +2,15 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { getCookie } from './utils/cookies';
+import store from './redux/store';
 
 //views
 import Dasboard from './views/dasboard.jsx';
 import Login from './views/login.jsx';
 import Book from './views/book/index.jsx'
 
-const notRequireAuth = component => (getCookie() !== undefined  ? <Redirect to="/" /> : component);
-const requireAuth = component => (getCookie() !== undefined ? component : <Redirect to='/login'/>);
+const notRequireAuth = component => (store.getState().get('Auth').get('Data') !== null  ? <Redirect to="/" /> : component);
+const requireAuth = component => (store.getState().get('Auth').get('Data') !== null ? component : <Redirect to='/login'/>);
 
 export const RouteInit = (
     <Switch>

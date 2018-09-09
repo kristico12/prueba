@@ -38,11 +38,13 @@ function AlertError(data) {
         )
     }
 }
-function SingIn(data) {
+function SingIn(data, session) {
     return (dispatch) => {
         // simulate backend
         if (data) {
-            setCookie(data.password, 1)
+            if (session) {
+                setCookie(data.password, 1)
+            }
             dispatch(
                 setLoginAuth(
                     typeActions.AUTH_LOGIN_SUCCESS,
