@@ -19,8 +19,13 @@ class NewEditBook extends Component {
     }
     componentDidUpdate(prevProps) {
         if (prevProps.info !== this.props.info) {
-            this.props.actions.AlertSuccess('Guardado Correctamente');
-            this.props.back()
+            if (this.props.detail.id === 0) {
+                this.props.actions.AlertSuccess('Guardado Correctamente');
+            } else {
+                this.props.actions.AlertSuccess('Actualizado Correctamente');
+            }
+            this.props.back();
+            this.props.actions.AlertSuccess('');
         }
     }
     onChange(e) {
