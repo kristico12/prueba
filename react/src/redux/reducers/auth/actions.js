@@ -1,5 +1,5 @@
 // utils
-import {getCookie} from '../../../utils/cookies';
+import { getCookie, setCookie } from '../../../utils/cookies';
 import typeActions from "./typeActions";
 
 //Dispacher
@@ -22,5 +22,18 @@ export function initAuth(dispatch) {
         }
         resolve(true);
     });
+}
+function AlertError(data) {
+    return (dispatch) => {
+        dispatch(
+            setLoginAuth(
+                typeActions.AUTH_LOGIN_ERROR,
+                data
+            )
+        )
+    }
+}
 
+export default {
+    AlertError,
 }
