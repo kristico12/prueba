@@ -6,10 +6,7 @@ import { Map as map } from 'immutable';
 
 const initialState = fromJS({
     book: {
-        data: {
-            count: 0,
-            array: {},
-        },
+        data: {},
         errors: {},
         success: {},
     },
@@ -26,23 +23,12 @@ function Error(state = initialState.get('book').get('errors'), action = {}) {
 function Data(state = initialState.get('book').get('data'), action = {}) {
     switch (action.type) {
         case typeActions.BOOK_LOAD:
-            action.payload.array = ConvertVecInmutableToObjectfull(action.payload.array, 'id', fromJS({}))
-            return fromJS(action.payload);
+            return ConvertVecInmutableToObjectfull(action.payload, 'id', state);
         case typeActions.BOOK_CREATE:
-            const obj = {}
-            obj.count = state.get('count') + 1;
-            obj.array = state.get('array').set(action.payload.key, map(action.payload.data));
-            return fromJS(obj)
         case typeActions.BOOK_UPDATE:
-            const obj3 = {}
-            obj3.count = state.get('count');
-            obj3.array = state.get('array').set(action.payload.key, map(action.payload.data));
-            return fromJS(obj3)
+            return state.set(action.payload.key, map(action.payload.data));
         case typeActions.BOOK_DELETE:
-            const obj2 = {}
-            obj2.count = state.get('count') - 1;
-            obj2.array = state.get('array').delete(action.payload.key);
-            return fromJS(obj2)
+            return state.delete(action.payload.key);
         default:
             return state;
     }

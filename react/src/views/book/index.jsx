@@ -60,12 +60,12 @@ class Book extends Component {
                     <span>
                         <img src="static/img/edit.png" onClick={() =>
                             this.setState({
-                                infoDetail: this.state.book.get('array').get(key),
+                                infoDetail: this.state.book.get(key),
                                 modalEdit: true,
                             })} />
                         <img src="static/img/delete.png" onClick={() =>
                             this.setState({
-                                infoDetail: this.state.book.get('array').get(key),
+                                infoDetail: this.state.book.get(key),
                                 modalDelete: true,
                             })} /> 
                     </span>
@@ -81,7 +81,7 @@ class Book extends Component {
                 <button type="button" onClick={() => this.setState({modalNew: true})}>Agregar</button>
                 <Table
                     columns={columns}
-                    data={Map(Map.isMap(this.state.book) ? this.state.book.get('array') : [])}
+                    data={Map(Map.isMap(this.state.book) ? this.state.book : [])}
                     id='id'
                     loading={this.state.loading}
                 />

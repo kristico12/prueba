@@ -36,13 +36,10 @@ function AlertSuccess(data) {
 function BookLoad() {
     return (dispatch) => {
         //Simulate call
-        const data = {};
-        data.count = store.getState().get('Book').get('Data').get('count');
-        data.array = VecInmutable(Model, []);
         dispatch(
             setBookDispacth(
                 typeActions.BOOK_LOAD,
-                data
+                VecInmutable(Model, [])
             )
         )
     }
@@ -50,7 +47,7 @@ function BookLoad() {
 function BookCreate(data) {
     return (dispatch) => {
         //Simulate call
-        const object = data;
+        const object = Object.assign({}, data);
         object.key = data.id;
         object.data = data;
         dispatch(
