@@ -13,6 +13,16 @@ function setBookDispacth(type, payload) {
 }
 
 // Actions
+function AlertError(data) {
+    return (dispatch) => {
+        dispatch(
+            setBookDispacth(
+                typeActions.BOOK_MESSAGE_ERROR,
+                data
+            )
+        )
+    }
+}
 function BookLoad() {
     return (dispatch) => {
         //Simulate call
@@ -30,4 +40,5 @@ function BookLoad() {
 
 export default {
     BookLoad,
+    AlertError,
 }

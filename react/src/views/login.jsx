@@ -75,6 +75,9 @@ class Login extends Component {
 
         })
     }
+    async componentWillUnmount() {
+        await this.props.actions.AlertError('')
+    }
     render() {
         const input = [
             { type: 'text', value: this.state.credential.email, label: 'Email:', name: 'email' },

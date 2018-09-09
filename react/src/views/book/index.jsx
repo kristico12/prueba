@@ -11,6 +11,7 @@ import actions from '../../redux/reducers/book/actions';
 import Table from '../../components/table.jsx';
 import Modal from '../../components/modal.jsx';
 import NewBook from './new.jsx';
+import Alert from '../../components/alert.jsx';
 
 class Book extends Component {
     constructor() {
@@ -67,6 +68,9 @@ class Book extends Component {
 		];
         return (
             <div>
+                <Alert
+                    error={this.props.error}
+                />
                 <button type="button" onClick={() => this.setState({modalNew: true})}>Agregar</button>
                 <Table
                     columns={columns}
