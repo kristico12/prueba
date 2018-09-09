@@ -34,12 +34,15 @@ function Data(state = initialState.get('book').get('data'), action = {}) {
             obj.array = state.get('array').set(action.payload.key, map(action.payload.data));
             return fromJS(obj)
         case typeActions.BOOK_UPDATE:
-            return state.get('array').set(action.payload.key, map(action.payload.data));
+            const obj3 = {}
+            obj3.count = state.get('count');
+            obj3.array = state.get('array').set(action.payload.key, map(action.payload.data));
+            return fromJS(obj3)
         case typeActions.BOOK_DELETE:
             const obj2 = {}
             obj2.count = state.get('count') - 1;
             obj2.array = state.get('array').delete(action.payload.key);
-            return fromJS(obj)
+            return fromJS(obj2)
         default:
             return state;
     }

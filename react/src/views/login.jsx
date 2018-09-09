@@ -88,7 +88,13 @@ class Login extends Component {
                 <Alert
                     error={this.props.error}
                 />
-                <form>
+                <form onKeyPress={(e) => {
+                    const charCode = e.which || e.keyCode;
+                    if (charCode === 13) {
+                        e.preventDefault();
+                        this.send();
+                    }
+                }}>
                     {
                         input.map((value) => (
                             <label key={value.name}>

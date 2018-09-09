@@ -1,16 +1,17 @@
 // Dependencies
 import React, { Component, Fragment, createRef } from 'react';
 import Loading from '../../components/loading.jsx';
+import { fromJS } from 'immutable';
 
 class NewEditBook extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             book: {
-                id: '',
-                name: '',
-                editorial: '',
-                authors: [],
+                id: this.props.detail.id,
+                name: this.props.detail.name,
+                editorial: this.props.detail.editorial,
+                authors: this.props.detail.authors,
             },
             loading: false,
         }
@@ -33,7 +34,7 @@ class NewEditBook extends Component {
     }
     async addAuthors(data) {
         const book = Object.assign({},this.state.book);
-        const array = this.state.book.authors.slice();
+        const array = this.state.book.authors;
         if (!array.every((info) => info.name !== data)) {
             await this.props.actions.AlertError('Este Author A sido Añadido');
         } else if (data.length < 3) {
@@ -47,7 +48,7 @@ class NewEditBook extends Component {
     }
     removeAuthors(i) {
         const book = Object.assign({},this.state.book);
-        const array = this.state.book.authors.slice();
+        const array = this.state.book.authors;
         array.splice(i, 1);
         book['authors']= array;
         this.setState({book});
@@ -82,8 +83,12 @@ class NewEditBook extends Component {
             if (isValid.bool) {
                 const time = new Date();
                 const book = Object.assign({}, this.state.book);
-                book.id = (!this.props.book.id.length===0) || time.getTime();
-                this.props.actions.BookCreate(book);
+                if (this.props.detail.id===0) {
+                    book.id = time.getTime(); 
+                    await this.props.actions.BookCreate(book);
+                } else {
+                    await this.props.actions.BookUpdate(book);
+                }
             } else {
                 await this.props.actions.AlertError(isValid.error);
                 await this.props.actions.AlertError('');
@@ -98,7 +103,14 @@ class NewEditBook extends Component {
         ]
         return (
             <Fragment>
-                <form onSubmit={(e) => this.Send(e)}>
+                <form
+                    onSubmit={(e) => this.Send(e)}
+                    onKeyPress={(e) => {
+                        const charCode = e.which || e.keyCode;
+                        if (charCode === 13) {
+                            e.preventDefault()
+                        }
+                    }}>
                     {
                             input.map((value) => (
                                 <label key={value.name}>
@@ -143,8 +155,11 @@ class NewEditBook extends Component {
     }
 }
 NewEditBook.defaultProps = {
-    book: {
-        id: '',
+    detail: {
+        id: 0,
+        name: '',
+        editorial: '',
+        authors: [],
     }
 }
 

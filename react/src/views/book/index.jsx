@@ -22,6 +22,7 @@ class Book extends Component {
             infoDetail: {},
 
             modalNew: false,
+            modalEdit: false,
 
         }
     }
@@ -57,7 +58,7 @@ class Book extends Component {
                     <span>
                         <label onClick={() =>
                             this.setState({
-                                infoDetail: this.state.attributes.get('array').get(key),
+                                infoDetail: this.state.book.get('array').get(key),
                                 modalEdit: true,
                             })}>
                             Edit
@@ -86,6 +87,17 @@ class Book extends Component {
                                 info={this.props.book}
                                 actions={this.props.actions}
                                 back={() => this.setState({modalNew: false})}
+                            />
+                        </Modal>
+                }
+                {
+                    this.state.modalEdit &&
+                        <Modal>
+                            <NewEditBook
+                                info={this.props.book}
+                                actions={this.props.actions}
+                                back={() => this.setState({modalEdit: false})}
+                                detail={this.state.infoDetail.toJS()}
                             />
                         </Modal>
                 }

@@ -61,11 +61,26 @@ function BookCreate(data) {
         );
     }
 }
+function BookUpdate(data) {
+    return (dispatch) => {
+        //Simulate call
+        const object = data;
+        object.key = data.id;
+        object.data = data;
+        dispatch(
+            setBookDispacth(
+                typeActions.BOOK_UPDATE,
+                object
+            )
+        );
+    }
+}
 
 
 export default {
     BookLoad,
     BookCreate,
+    BookUpdate,
     AlertError,
     AlertSuccess,
 }
