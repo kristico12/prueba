@@ -2,9 +2,11 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import { withRouter } from 'react-router-dom';
 
 //Components
 import Alert from '../components/alert.jsx';
+import Loading from '../components/loading.jsx';
 
 //utils
 import { validateEmail } from '../utils/validate';
@@ -24,6 +26,11 @@ class Login extends Component {
         }
     }
     componentDidUpdate(prevProps) {
+        if (prevProps.token !== this.props.token) {
+            if (this.props.token !== null) {
+                this.props.history.replace('/');
+            }
+        }
     }
     onChange(e) {
         const target = e.target;
@@ -60,10 +67,11 @@ class Login extends Component {
             }
             const isValid = validate(this.state.credential);
             if (isValid.bool) {
-                console.log('se fue');
+                await this.props.actions.SingIn(this.state.credential)
             } else {
                 await this.props.actions.AlertError(isValid.error)
             }
+            this.setState({loading: false})
 
         })
     }
@@ -91,7 +99,13 @@ class Login extends Component {
                             </label>
                         ))
                     }
-                    <button type="button" onClick={() => this.send()}>Enviar</button>
+                    <div>
+                        <button type="button" onClick={() => this.send()}>Enviar</button>
+                        {
+                            this.state.loading &&
+                                <Loading />
+                        } 
+                    </div>
                 </form>
             </div>
         )
@@ -107,4 +121,4 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return { actions: bindActionCreators(actions, dispatch) };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
