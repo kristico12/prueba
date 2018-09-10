@@ -2,6 +2,9 @@
 import React, { Component, Fragment, createRef } from 'react';
 import Loading from '../../components/loading.jsx';
 
+// Themes
+import { inputTheme, labelFormTheme, buttomSendTheme, buttomCancelTheme} from '../../themes/index';
+
 class NewEditBook extends Component {
     constructor(props) {
         super(props);
@@ -108,6 +111,7 @@ class NewEditBook extends Component {
         return (
             <Fragment>
                 <form
+                    className="form-content"
                     onSubmit={(e) => this.Send(e)}
                     onKeyPress={(e) => {
                         const charCode = e.which || e.keyCode;
@@ -115,11 +119,13 @@ class NewEditBook extends Component {
                             e.preventDefault()
                         }
                     }}>
+                    <h4 className="title">{this.props.detail.id===0 ? "Agregar Nuevo Libro" : "Editar Libro"}</h4>
                     {
                             input.map((value) => (
-                                <label key={value.name}>
+                                <label key={value.name} className="labelFormTheme">
                                     {value.label}
                                     <input
+                                        className="inputTheme"
                                         type={value.type}
                                         value={value.value}
                                         name={value.name}
@@ -128,14 +134,16 @@ class NewEditBook extends Component {
                                 </label>
                             ))
                     }
-                    <div>
-                        <label>
+                    <div className="content-much-buttom">
+                        <label
+                            className="labelFormTheme label-margin"
+                        >
                             Nombre Autor:
-                            <input type="text" ref={this.valAutor} />
+                            <input type="text" className="inputTheme" ref={this.valAutor} />
                         </label>
-                        <button type="button" onClick={() => this.addAuthors(this.valAutor.current.value)}>Añadir</button>
+                        <button type="button" className="buttomSendTheme buttom-botoom" onClick={() => this.addAuthors(this.valAutor.current.value)}>Añadir</button>
                     </div>
-                    <ul>
+                    <ul className="content-list">
                         {
                             this.state.book.authors.map((item, i) => (
                                 <li key={item.name}>
@@ -145,15 +153,50 @@ class NewEditBook extends Component {
                             ))
                         }
                     </ul>
-                    <div>
-                        <button onClick={() => this.props.back()}>Atras</button>
-                        <button>Guardar</button>
+                    <div className="content-much-buttom">
+                        <button className="buttomSendTheme">Guardar</button>
+                        <button className="buttomCancelTheme" onClick={() => this.props.back()}>Atras</button>
                         {
                             this.state.loading &&
                                 <Loading />
                         }
                     </div>
                 </form>
+                <style jsx>{`
+                    .form-content {
+                        padding: 2em 1em 1em 1em;
+                        display: grid;
+                        grid-template-rows: 3em auto;
+                        grid-row-gap: 1em;
+                    }
+                    .title {
+                        font-family: 'Abel', sans-serif;
+                        text-transform: capitalizable;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 1.5em;
+                    }
+                    .content-much-buttom {
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+                    }
+                    .label-margin {
+                        margin-right: 1.5em;
+                    }
+                    .buttom-botoom {
+                        position: relative;
+                        top: 12px;
+                    }
+                    .content-list {
+                        list-styled: none;
+                    }
+                `}</style>
+                <style jsx>{inputTheme}</style>
+                <style jsx>{labelFormTheme}</style>
+                <style jsx>{buttomSendTheme}</style>
+                <style jsx>{buttomCancelTheme}</style>
             </Fragment>
         )
     }
