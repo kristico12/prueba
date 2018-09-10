@@ -89,7 +89,9 @@ class Book extends Component {
                 </div>
                 {
                     this.state.modalNew &&
-                        <Modal>
+                        <Modal
+                            back={() => this.setState({modalNew: false})}
+                        >
                             <NewEditBook
                                 info={this.props.book}
                                 actions={this.props.actions}
@@ -99,7 +101,9 @@ class Book extends Component {
                 }
                 {
                     this.state.modalEdit &&
-                        <Modal>
+                        <Modal
+                            back={() => this.setState({modalEdit: false})}
+                        >
                             <NewEditBook
                                 info={this.props.book}
                                 actions={this.props.actions}
@@ -110,7 +114,9 @@ class Book extends Component {
                 }
                 {
                     this.state.modalDelete &&
-                        <Modal>
+                        <Modal
+                            back={() => this.setState({modalDelete: false})}
+                        >
                             <DeleteBook
                                 detail={this.state.infoDetail.toJS()}
                                 name='name'
