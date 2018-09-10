@@ -1,6 +1,13 @@
 {
     "presets": [
-      "react", "env"
+      "react", 
+      [
+        "env", {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ],
     "plugins": [
       ["styled-jsx/babel", { "optimizeForSpeed": true }]

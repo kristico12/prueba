@@ -1,7 +1,7 @@
 //Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter  as Router} from 'react-router-dom';
 import {Provider} from "react-redux";
 
 //store
@@ -11,16 +11,17 @@ import store from './src/redux/store';
 import { initAuth } from './src/redux/reducers/auth/actions';
 
 // Routes
-import { RouteInit } from './routes.jsx';
+import { RouteInit } from './src/routes.jsx';
+
 
 initAuth(store.dispatch).then(() => {
     ReactDOM.render(
         <Provider store={store}>
-            <BrowserRouter>
+            <Router>
                 {
                     RouteInit
                 }
-            </BrowserRouter>
+            </Router>
         </Provider>,
         document.getElementById('react')
     );

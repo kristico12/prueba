@@ -37,7 +37,7 @@ function Notification(props) {
                     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
                 }
                 .alertSuccess {
-                    background-color: #0080c0;
+                    background-color: ${props.success ? 'green' : 'red'};
                     border-color: #ffffff;
                     color: white;
                 }
@@ -74,6 +74,9 @@ function Notification(props) {
         </div>
 
     )
+}
+Notification.defaultProps = {
+    success: false,
 }
 
 export default Notification;

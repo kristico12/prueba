@@ -5,7 +5,7 @@ import typeActions from "./typeActions";
 
 const initialState = fromJS({
     auth: {
-        token: null,
+        data: null,
         error: '',
     },
 });
@@ -20,7 +20,7 @@ function Error(state = initialState.get('auth').get('error'), action = {}) {
     }
 }
 
-function Data(state = initialState.get('auth').get('token'), action = {}) {
+function Data(state = initialState.get('auth').get('data'), action = {}) {
     switch (action.type) {
         case typeActions.AUTH_LOGIN_SUCCESS:
             return action.payload;
