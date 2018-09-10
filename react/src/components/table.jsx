@@ -49,7 +49,7 @@ function Table(props) {
                         text-align: center;
                         padding: 5px;
                     }
-                    table :global(.tr-body) {
+                    tbody :global(.tr-body) {
                         background-color: #e2e2e2;
                         text-align: center;
                         padding: 3px;
