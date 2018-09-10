@@ -1,14 +1,14 @@
 // Dependencies
-import React from 'react';
+import React, { Fragment } from 'react';
 
 function Table(props) {
     let rows = [];
     if (!props.loading) {
-        rows = props.data.map(data => (
-            <tr key={data.get(props.id)}>
+        rows = props.data.map((data,i) => (
+            <tr key={data.get(props.id)} className="tr-body">
                 {
                     props.columns.map(column => (
-                        <td key={column.title} >
+                        <td key={column.title}>
                             {column.render ? column.render(data.get(column.key)) :  data.get(column.key)}
                         </td>
                     ))
@@ -17,28 +17,46 @@ function Table(props) {
           )).toArray();
     }
     return (
-        <table className="Table">
-            <thead>
-            <tr key="row">
-                {props.columns.map(column => (
-                /* eslint-disable jsx-a11y/no-static-element-interactions */
-                    <th
-                        key={column.title}
-                    >
-                        {
-                            column.title
-                        } &nbsp;
-                    </th>
-                /* eslint-enable jsx-a11y/no-static-element-interactions */
-            ))}
-            </tr>
-            </thead>
-            <tbody>
-                {
-                    rows
-                }
-            </tbody>
-        </table>
+        <Fragment>
+            <table className="Table">
+                <thead>
+                    <tr>
+                        {props.columns.map(column => (
+                            <th
+                                key={column.title}
+                            >
+                                {
+                                    column.title
+                                }
+                            </th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        rows
+                    }
+                </tbody>
+                <style jsx>{`
+                    table {
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+                    th {
+                        text-transform: uppercase;
+                        background-color: #ff3737;
+                        color: white;
+                        text-align: center;
+                        padding: 5px;
+                    }
+                    table :global(.tr-body) {
+                        background-color: #e2e2e2;
+                        text-align: center;
+                        padding: 5px;
+                    }                    
+                `}</style>
+            </table>
+        </Fragment>
     )
 }
 

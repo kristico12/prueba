@@ -57,13 +57,13 @@ class Book extends Component {
                 title: 'Opciones',
                 key: 'id',
                 render: (key) => (
-                    <span>
-                        <img src="static/img/edit.png" onClick={() =>
+                    <span className="content-img">
+                        <img className="img" src="static/img/edit.png" onClick={() =>
                             this.setState({
                                 infoDetail: this.state.book.get(key),
                                 modalEdit: true,
                             })} />
-                        <img src="static/img/delete.png" onClick={() =>
+                        <img className="img" src="static/img/delete.png" onClick={() =>
                             this.setState({
                                 infoDetail: this.state.book.get(key),
                                 modalDelete: true,
@@ -133,6 +133,13 @@ class Book extends Component {
                         border: 1px solid #ffffff;
                         background-color: #d1d1d1;
                         color: #1323ec;
+                    }
+                    div :global(.content-img) {
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                    div :global(.img) {
+                        cursor: pointer;
                     }
 
                 `}</style>
