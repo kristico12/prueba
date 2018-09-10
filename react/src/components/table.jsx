@@ -52,7 +52,8 @@ function Table(props) {
                     table :global(.tr-body) {
                         background-color: #e2e2e2;
                         text-align: center;
-                        padding: 5px;
+                        padding: 3px;
+                        height: 3em;
                     }                    
                 `}</style>
             </table>
