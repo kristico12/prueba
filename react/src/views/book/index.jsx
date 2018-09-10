@@ -1,5 +1,5 @@
 // Dependencies
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import { Map } from 'immutable';
@@ -73,18 +73,20 @@ class Book extends Component {
             }
 		];
         return (
-            <div>
+            <Fragment>
                 <Alert
                     error={this.props.error}
                     success={this.props.success}
                 />
-                <button type="button" onClick={() => this.setState({modalNew: true})}>Agregar</button>
-                <Table
-                    columns={columns}
-                    data={Map(Map.isMap(this.state.book) ? this.state.book : [])}
-                    id='id'
-                    loading={this.state.loading}
-                />
+                <div className="content-buttom-table">
+                    <button className="buttom-add" type="button" onClick={() => this.setState({modalNew: true})}>Agregar</button>
+                    <Table
+                        columns={columns}
+                        data={Map(Map.isMap(this.state.book) ? this.state.book : [])}
+                        id='id'
+                        loading={this.state.loading}
+                    />
+                </div>
                 {
                     this.state.modalNew &&
                         <Modal>
@@ -118,7 +120,23 @@ class Book extends Component {
                             />
                         </Modal>
                 }
-            </div>
+                <style jsx>{`
+                    .content-buttom-table {
+                        display: grid;
+                        grid-template-rows: 2.5em auto;
+                        grid-row-gap: 1.5em;
+                    }
+                    .buttom-add {
+                        width: 6em;
+                        cursor: pointer;
+                        border-radius: 1em;
+                        border: 1px solid #ffffff;
+                        background-color: #d1d1d1;
+                        color: #1323ec;
+                    }
+
+                `}</style>
+            </Fragment>
         )
     }
 }

@@ -36,7 +36,6 @@ function SideBar() {
 					height: 100vh;
 					overflow-y: hidden;
 					background-color: #acacac;
-					box-shadow: 5px 0px #bdbdbd;
 
 					display: grid;
 					grid-template-rows:  12em 1fr 3em;
