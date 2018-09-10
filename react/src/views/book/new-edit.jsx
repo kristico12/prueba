@@ -147,8 +147,8 @@ class NewEditBook extends Component {
                         {
                             this.state.book.authors.map((item, i) => (
                                 <li key={item.name}>
-                                    <span>{item.name}</span>
-                                    <img src="static/img/delete.png" alt="Borrar" onClick={() => this.removeAuthors(i)}/>
+                                    <span className="list-item">{item.name}</span>
+                                    <img className="img-delete" src="static/img/delete.png" alt="Borrar" onClick={() => this.removeAuthors(i)}/>
                                 </li>
                             ))
                         }
@@ -190,7 +190,16 @@ class NewEditBook extends Component {
                         top: 12px;
                     }
                     .content-list {
-                        list-styled: none;
+                        list-style: square inside url("static/img/add.png");
+                    }
+                    .list-item {
+                        margin-right: 10px;
+                    }
+                    .img-delete {
+                        position: relative;
+                        top: 9;
+                        height: 1.8em;
+                        cursor: pointer;
                     }
                 `}</style>
                 <style jsx>{inputTheme}</style>
